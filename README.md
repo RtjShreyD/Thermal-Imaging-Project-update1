@@ -9,10 +9,12 @@ I.	Front view with the hands of the person are away from the body making an angl
 II.	The side view of the person with hands close to the body.
 III.	The side view of the person with one leg on the ground and another raised to a height from the ground, such that a 90 degree angle is made at the knee.
 Note: Care should be taken that the distance of the person from the camera should not be changed while taking images in different postures, also the camera or the person shouldn’t move sideways.  
+
 CONVERTING THE THERMAL IMAGE INTO A MATRIX:
 3. Now transfer the images into your PC.
 4. Install FLIR TOOLS application on your PC and open these images in the application.
 5. After opening right click on the image and use ‘export to csv’ option to convert the image into a “.csv” format (matrix format) and save it with a name.
+
 LIST OF USER DEFINED FUNCTIONS:
 Before we move forward in seeing how things work in this project we will have a look at all the user defined functions of this project.
 •	initiate2()
@@ -57,6 +59,7 @@ Before we move forward in seeing how things work in this project we will have a 
 •	measureknee()
 •	entireprocessfn()
 While working with the above functions and using them further in the project we shall also know deeply about how each function processes itself as we encounter them in making of the project.
+
 CONVERTING THE INTENSITY IMAGE INTO A BINARY IMAGE:
 6. In MATLAB use “initiate2” function to convert the image into a binary image.
 Ex: filename= 'n1.csv';
@@ -68,6 +71,7 @@ Initially for thresholding methods like using mean, mode, median, Otsu’s metho
 So, the current method being used for thresholding is to take the histogram of intensities in the image and smooth the histogram using Savitzky-Golay filter wit window length 45, polynomial order 3, eight times. And now the x-value on the histogram of the minimum after the global maximum is the required threshold value.
 Now the pixels with higher than the threshold value are given value 255, else they are given 0.
 The pixels with intensity=255 are our foreground and ones with intensity=0 are our background pixels.
+
 ALIGNING THE FRONT VIEW IMAGE AND SIDE VIEW IMAGES:
 7. Now, the images of side view, front view should be adjusted such that the ‘ymin’ of both the images is equal ,inorder to find out the measurements.
 It is done by using the function “alignfun”.
@@ -95,7 +99,9 @@ FEATURE POINTS DETECTION:
 •	Shoulder2 point- this is found by traversing from the head to the maximum of X value point and after the first maxima of X occurs calculating the slope of every point in that region , the point for which slope is 1st equals 0 is our required point. Also defined in new_rightpoints ().
 •	Thumb point- These are the Index1 point and final Index point in the whole image and are found by minima and maxima of X aixis.
 Now having a basic knowledge of all the points we can move to the next steps in the project. All the functions mentioned here can be downloaded from the repository link mentioned below
+
 https://github.com/RtjShreyD/Thermal-Imaging-Project-update1
+
 I.cro=crotchfn(a1,C,X1,Y1);
 This function is used to find out the Crotch point Index from the front view.
 hip =hipfn(C2,X2,Y2);
@@ -113,6 +119,7 @@ function sh=leftsh(c,X,Y)
 "sh" is the index in X and Y for the shoulder point and mapped on the blob
 For getting the right shoulder just flip the image and use the same function to get the same point now we can mirror that point by (size(image,2)-x(rh) , y(rh)). This will be the required point.
 III. We have to take another side facing image to find out knee point and knee measurement by taking an image of bent knee for location of edge and mapped in same way to find out its location to measure the knee.
+
 ALIGNING: 
 10. Points are aligned and adjusted from front view and side view to get to get mapped points in both the views.
 Now P consists of front view feature points and Ps consists of  side view.
@@ -123,6 +130,7 @@ Location 4 consists of Crotch or Thigh points.
 Location 5 consists of Hip points.
 Location 6 consists of Shirt Waist points.
 Location 7 consists of Trouser waist points.
+
 FINDING MEASURMENTS:
 11. After getting the featured points form Point detection function now we have do get the measurements. 
 Functions like 
@@ -136,6 +144,7 @@ t7=measuretrouserwaist(P,ps);
 t8=measureshirtwaist(P,ps);
 t9=measureoutseam(Y,P);
 All these functions are used to find out to measureThigh , Neck , Inseam , Hip , Chest , Bicep , Trouser Waist , Shirt Waist and Out seam respectively.
+
 CONVERT PIXEL LENGTHS TO ACTUAL LENGTHS:
 12. For temporary purposes we take the physical or original height of the training example . In other side take the Height of blob by using maximum – minimum. From this ratio we will get the pixel to body ratio. 
 From the measurements which we got from the above function we have to multiply with the ratio to get measurements in Inches.
