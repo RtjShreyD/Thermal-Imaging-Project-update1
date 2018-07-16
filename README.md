@@ -1,6 +1,7 @@
                                                                          
 TECH-TAILOR Human Body Measurments by Thermal Imaging Project
- TAKING IMAGES:
+
+TAKING IMAGES:
 1. Install FLIR ONE App on your smart phone.
 2. Now take the images of the person in different postures.
 The different postures are:
