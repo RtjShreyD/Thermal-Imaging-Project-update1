@@ -149,3 +149,9 @@ CONVERT PIXEL LENGTHS TO ACTUAL LENGTHS:
 12. For temporary purposes we take the physical or original height of the training example . In other side take the Height of blob by using maximum – minimum. From this ratio we will get the pixel to body ratio. 
 From the measurements which we got from the above function we have to multiply with the ratio to get measurements in Inches.
 
+
+
+
+
+
+process() function consisists of the full work in a function that can be called manually and it will run the whole process, few new files added as initiatex.m, realneck.m and experiment3 are copies of their parent files with minor changes. 
