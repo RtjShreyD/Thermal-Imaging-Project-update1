@@ -5,5 +5,6 @@ function [newVal] = rounds(x)
         newVal = floorVal + 0.5;      
     else
         newVal = floorVal;
+    end
 end
 
