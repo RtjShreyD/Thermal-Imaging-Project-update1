@@ -1,4 +1,5 @@
-function []= Santosh(count,kk)
+function []= Arshad(count,kk)
+
 if count<26
     Stringvect = ('B':'Z');
     posColumn = [Stringvect(count) '4'];
@@ -13,12 +14,13 @@ elseif count>52 && count<78
 else
     fprintf('Error: Count limit exceeds than what is defined, please define higher limits in code');
 end
-%kk=7; 
-height=65.5;
-filename1='Santoshf1.csv';
-filename2='Santoshs1.csv';
-filename3='Santoshf2.csv';
-filename4='Santoshs2.csv'; 
+
+% kk=7; 
+height=68;
+filename1='arshadf1.csv';
+filename2='arshads1.csv';
+filename3='arshadf2.csv';
+filename4='arshads2.csv'; 
 S = strsplit(filename1,'f');
 disp(S);
 
@@ -28,8 +30,8 @@ A2=initiate2(filename2,kk);
 A2=flip(A2,2);
 [a1,a2]=alignfun(A1,A2);
 
- A3=initiate2(filename3,kk);
-% A3=initiate4(filename3);
+A3=initiate2(filename3,kk);
+%A3=initiate4(filename3);
 [a3,a4]=alignfun(A3,flip(A2,2));
 %
 % for knee we have to take a side view picture from side view .
@@ -117,7 +119,7 @@ catch
             fprintf('Another try for rescue\n');
             nck1 =  neckhandle4(filename1,filename2,height);
             nck2 = NeckCalc(filename1,filename2,height);
-            neck = (nck1+nck2)/2;
+            neck = (nck1 + nck2)/2;
             
         catch
             fprintf('Final try for rescue\n');
@@ -127,7 +129,6 @@ catch
     end
 end   
 ValuesInInches(8)=neck;  
-
 % measuring
 t1=measurethigh(P,ps);
 ValuesInInches(12)=t1*t;
@@ -159,10 +160,13 @@ ValuesInInches(2)=t11*t;
 ValuesInInches(13)=measureknee(a5,t);
 ValuesInInches=ValuesInInches';
 Values = rounds(ValuesInInches);
-
  excelfile= 'test.xlsx';
- xlswrite(excelfile,Values,'Santosh',posColumn);
+ %excelfile= 'check.xlsx';
+ xlswrite(excelfile,Values,'Arshad',posColumn);
 
 end
 
 
+
+ 
+    

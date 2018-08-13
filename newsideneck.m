@@ -25,7 +25,7 @@ xr(:)=abs(x2(:)-a(1,1));
 yr(:)=abs(y2(:)-a(1,2));
 sr=xr+yr;
 % sr=sr';
-% the above method is to find out the the idex(locofmin) is itself is the
+% the above method is to find out the the index(locofmin) is itself is the
 % front point of the image given
 % it is shifted because of the change in index.
 [~,locofmin]=minfun2(sr);
@@ -66,8 +66,8 @@ for k=front:fronttraverse
 end
 [~,locfront]=minfun2(dist3);
 frontt=locfront-1+front;
-p(1,1)=x2(frontt);
-p(1,2)=y2(frontt);
+p(1,1)=x2(frontt)+15;   %%%%%%%%%%changed here
+p(1,2)=y2(frontt)+15;   %%%%%%%%%%changed here
 % now in the same way i have to do the same algo for refining the front
 % point.
 siz4=l(3,2)-backk+1;
@@ -77,7 +77,7 @@ for j=backk:l(3,2)
 end
 [~,locbackk]=minfun2(dist4);
 backkk=locbackk-1+backk;
-p(2,1)=x2(backkk);
-p(2,2)=y2(backkk);
+p(2,1)=x2(backkk)-15;     %%%%%%%%%%%changed here
+p(2,2)=y2(backkk)-15;     %%%%%%%%%%%changed here
 
 end

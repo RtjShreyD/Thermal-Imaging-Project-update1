@@ -1,4 +1,4 @@
-function neck = neckhandle(filename1,filename2,height,P,ps,t)
+function neck = neckhandle3(filename1,filename2,height,P,ps,t,ps0)
 f = 0;
 dim = 0;
 dx  = zeros(1,65);
@@ -17,43 +17,27 @@ for i=1:65
         end   
                         
     catch
-        fprintf('Having error in  try section\n');
+        fprintf('Having error in  try section of neckhandle3 at %f\n',i);
         if i==65
-            fprintf('Using altered old neck method now\n');          
+            fprintf('Using altered old neck method now......\n');
+            fprintf('The next val obtained could be either the only val for the last time loop run or the last val preceding some number of 0 vals\n');
             dx(i) = t*measureneck(P,ps);
-            
+                        
         end             
     end
     
         dim = i;
-end 
-   %disp(dx);
+end
+try
    mat2 = zeros(1,dim);
    mat2 = ridofzero(dx);
-   %disp(mat2);
+   %disp(mat2);       
    mat2 = valbw(mat2);
    %disp(mat2);
    neck = mean(mat2);
-   disp(neck);
+   %disp(neck);
+catch
+   fprintf('no values in range trying to get other way\n'); 
+   neck = neckhandle2(filename1,filename2,height,P,ps0,t);
    
-   
-    
-    
-    
-        
-     
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-end
+end    
