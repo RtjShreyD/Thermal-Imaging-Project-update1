@@ -38,6 +38,6 @@ try
    %disp(neck);
 catch
    fprintf('no values in range trying to get other way\n'); 
-   neck = neckhandle2(filename1,filename2,height,P,ps0,t);
+   neck = neckhandle2(filename1,filename2,height,P,ps0,t); %ps0 has been calculated using newsideneck0(). newsideneck0() is same as newsideneck() the only difference being that newsideneck() has been modified and correction variable is applied in it while newsideneck0 is the original.
    
 end    
