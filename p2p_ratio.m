@@ -1,3 +1,5 @@
+%%simialr to the pixeltobody() just here the ratio is calculated on the basis of distance
+
 function [r1,r2]=p2p_ratio(filename1,filename2,height)
 A1=initiate2(filename1,7);
 A2=initiate2(filename2,7);
