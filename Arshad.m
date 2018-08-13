@@ -1,5 +1,7 @@
+%%functions in the name of every persons has been created as this one so that they can all run at once and give the measurements which are stored in excel file
 function []= Arshad(count,kk)
 
+%%for storing the results in excel sheets into the next column
 if count<26
     Stringvect = ('B':'Z');
     posColumn = [Stringvect(count) '4'];
@@ -80,7 +82,7 @@ ps=loc2(X2,Y2,l);
 %%then the neck point is correctly mapped....for some images it is not
 %%going fine it runs with errors for those images we have commented it
 try
-    [~,~,pneck]=newsideneck0(a2,l);
+    [~,~,pneck]=newsideneck0(a2,l); %%this is the original newsideneck()
     ps0(1,1,1)=pneck(1,1);
     ps0(1,1,2)=pneck(1,2);
     ps0(1,2,1)=pneck(2,1);
@@ -91,12 +93,12 @@ end
 n1 = 0;
 n2 = 0;
 try
-    [~,~,pneck]=newsideneck(a2,l);
+    [~,~,pneck]=newsideneck(a2,l); %%this is the newsideneck() with correction variable used
     ps(1,1,1)=pneck(1,1);
     ps(1,1,2)=pneck(1,2);
     ps(1,2,1)=pneck(2,1);
     ps(1,2,2)=pneck(2,2);
-    n1 = realneck2(filename1,filename2,height,kk);
+    n1 = realneck2(filename1,filename2,height,kk); %%this is the realmeasureneck() with correction applied
     fprintf('Came out of realneck, n1 is %f\n',n1);
     n2 = t*measureneck(P,ps);
     fprintf('Calculated n2 as %f, no error in sideneck()\n',n2);
@@ -111,8 +113,8 @@ catch
     fprintf('error in try section\n');  
     try
         nk =  neckhandle3(filename1,filename2,height,P,ps,t,ps0);
-        nck = NeckCalc(filename1,filename2,height);
-        neck = (nk + nck)/2;
+        nck = NeckCalc(filename1,filename2,height); %%this is the new developed function read about it in the docx file update jul-Aug
+        neck = (nk + nck)/2; %calculation average of the above two calculated values
         
     catch
         try
@@ -159,10 +161,10 @@ t11=measureshoulder(a3);
 ValuesInInches(2)=t11*t;
 ValuesInInches(13)=measureknee(a5,t);
 ValuesInInches=ValuesInInches';
-Values = rounds(ValuesInInches);
- excelfile= 'test.xlsx';
+Values = rounds(ValuesInInches);  %%rounds of the values to the nearest multiple of 0.5, however still requires more precision as it does not give precision when used at one go to calculate so many values
+ excelfile= 'test.xlsx';   %%this is the excel file in which different sheets are created for every person
  %excelfile= 'check.xlsx';
- xlswrite(excelfile,Values,'Arshad',posColumn);
+ xlswrite(excelfile,Values,'Arshad',posColumn); %%write data to excel file in next column
 
 end
 
