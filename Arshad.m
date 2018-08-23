@@ -1,7 +1,5 @@
-%%functions in the name of every persons has been created as this one so that they can all run at once and give the measurements which are stored in excel file
 function []= Arshad(count,kk)
 
-%%for storing the results in excel sheets into the next column
 if count<26
     Stringvect = ('B':'Z');
     posColumn = [Stringvect(count) '4'];
@@ -55,8 +53,8 @@ cro=crotchfn(a1,C,X1,Y1);
 hip =hipfn(C,X2,Y2);
 hiplevel=y2(hip);
 %
-[location2,p1]=new_right_points(a1,cro,hiplevel);
-[location,p2]=new_left_points(a1,cro,hiplevel);
+[location2,p1]=new_right_points3(a1,cro,hiplevel);
+[location,p2]=new_left_points3(a1,cro,hiplevel);
 leftloc=location;
 rightloc=location2;
 X=X1;
@@ -82,7 +80,7 @@ ps=loc2(X2,Y2,l);
 %%then the neck point is correctly mapped....for some images it is not
 %%going fine it runs with errors for those images we have commented it
 try
-    [~,~,pneck]=newsideneck0(a2,l); %%this is the original newsideneck()
+    [~,~,pneck]=newsideneck0(a2,l);
     ps0(1,1,1)=pneck(1,1);
     ps0(1,1,2)=pneck(1,2);
     ps0(1,2,1)=pneck(2,1);
@@ -93,16 +91,16 @@ end
 n1 = 0;
 n2 = 0;
 try
-    [~,~,pneck]=newsideneck(a2,l); %%this is the newsideneck() with correction variable used
+    [~,~,pneck]=newsideneck(a2,l);
     ps(1,1,1)=pneck(1,1);
     ps(1,1,2)=pneck(1,2);
     ps(1,2,1)=pneck(2,1);
     ps(1,2,2)=pneck(2,2);
-    n1 = realneck2(filename1,filename2,height,kk); %%this is the realmeasureneck() with correction applied
+    n1 = realneck2(filename1,filename2,height,kk);
     fprintf('Came out of realneck, n1 is %f\n',n1);
     n2 = t*measureneck(P,ps);
     fprintf('Calculated n2 as %f, no error in sideneck()\n',n2);
-    %n3 = NeckCalc(filename1,filename2,height);
+    %n3 = NeckCalc2(filename1,filename2,height);
     %fprintf('Calculated n3 as %f, no error in NeckCalc()\n',n3);
     args = [n1, n2];  %%add here n3 for Con.A
     arr = valbw(args);
@@ -113,19 +111,19 @@ catch
     fprintf('error in try section\n');  
     try
         nk =  neckhandle3(filename1,filename2,height,P,ps,t,ps0);
-        nck = NeckCalc(filename1,filename2,height); %%this is the new developed function read about it in the docx file update jul-Aug
-        neck = (nk + nck)/2; %calculation average of the above two calculated values
+        nck = NeckCalc2(filename1,filename2,height);
+        neck = (nk + nck)/2;
         
     catch
         try
             fprintf('Another try for rescue\n');
             nck1 =  neckhandle4(filename1,filename2,height);
-            nck2 = NeckCalc(filename1,filename2,height);
+            nck2 = NeckCalc2(filename1,filename2,height);
             neck = (nck1 + nck2)/2;
             
         catch
             fprintf('Final try for rescue\n');
-            neck = NeckCalc(filename1,filename2,height);
+            neck = NeckCalc2(filename1,filename2,height);
         end
         
     end
@@ -139,7 +137,7 @@ ValuesInInches(12)=t1*t;
 %ValuesInInches(8)=t*measureneck(P,ps);
 t3=measureinseam(X1,Y1,x1,y1,cro);
 ValuesInInches(14)=t3*t;
-t4=measurehip(P,ps);
+t4=measurehip2(P,ps);
 ValuesInInches(7)=t4*t;
 ValuesInInches(11)=ValuesInInches(7);
 t5=measurechest(P,ps);
@@ -148,8 +146,8 @@ t6= measurenbicep(leftloc,rightloc,X1,Y1);
 ValuesInInches(4)=t6*t;
 t7=measuretrouserwaist(P,ps);
 t8=measureshirtwaist(P,ps);
-ValuesInInches(6)=t8*t; %initially was t7*t
-ValuesInInches(10)=t7*t; %initially was t8*t
+ValuesInInches(6)=t7*t; %initially was t7*t  %unswapped
+ValuesInInches(10)=t8*t; %initially was t8*t
 t9=measureoutseam(X1,Y1,cro,P);
 ValuesInInches(9)=t9*t;
 %
@@ -161,10 +159,10 @@ t11=measureshoulder(a3);
 ValuesInInches(2)=t11*t;
 ValuesInInches(13)=measureknee(a5,t);
 ValuesInInches=ValuesInInches';
-Values = rounds(ValuesInInches);  %%rounds of the values to the nearest multiple of 0.5, however still requires more precision as it does not give precision when used at one go to calculate so many values
- excelfile= 'test.xlsx';   %%this is the excel file in which different sheets are created for every person
+Values = rounds(ValuesInInches);
+ excelfile= 'test2.xlsx';
  %excelfile= 'check.xlsx';
- xlswrite(excelfile,Values,'Arshad',posColumn); %%write data to excel file in next column
+ xlswrite(excelfile,Values,'Arshad',posColumn);
 
 end
 
