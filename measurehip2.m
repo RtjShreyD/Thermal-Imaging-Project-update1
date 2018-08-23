@@ -7,19 +7,10 @@ try
     a=sqrt((p1(5,1,1)-p1(5,2,1)).^2+(p1(5,1,2)-p1(5,2,2)).^2);
     b=sqrt((p2(5,1,1)-p2(5,2,1)).^2+(p2(5,1,2)-p2(5,2,2)).^2);
     d=pi*(a+b)/2;
-%     disp(d);
-%     h=max(l,d);   %%CON.A
-%     h = (l+d)/2;   %%CON.B
-%     disp(h);
     minn=min(l,d); 
     maxx=max(l,d);
-    diff=maxx-minn;
-    h=maxx+diff;      %%CON.C
-    %avg=(maxx+minn)/2;
-    %diff=maxx-avg;
-    %h=maxx+diff;        %%CON.D
-    
-    
+    diff1=maxx-minn;
+    h=maxx+diff1;      %%CON.C  
 catch
     fprintf('Calculating simply with newhip front()\n');
     a=sqrt((p1(5,1,1)-p1(5,2,1)).^2+(p1(5,1,2)-p1(5,2,2)).^2);
