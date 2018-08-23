@@ -1,0 +1,50 @@
+try
+    [~,~,pneck]=newsideneck0(a2,l);
+    ps0(1,1,1)=pneck(1,1);
+    ps0(1,1,2)=pneck(1,2);
+    ps0(1,2,1)=pneck(2,1);
+    ps0(1,2,2)=pneck(2,2);
+catch
+    fprintf('error with newsideneck0.....risk element\n');
+end
+n1 = 0;
+n2 = 0;
+try
+    [~,~,pneck]=newsideneck(a2,l);
+    ps(1,1,1)=pneck(1,1);
+    ps(1,1,2)=pneck(1,2);
+    ps(1,2,1)=pneck(2,1);
+    ps(1,2,2)=pneck(2,2);
+    n1 = realneck2(filename1,filename2,height,kk);
+    n2 = t*measureneck(P,ps);
+    n3 = NeckCalc(filename1,filename2,height);  %%comment this for ConB
+    args = [n1, n2, n3];   %%remove n3 from here for condition B
+    arr = valbw(args);
+    neck = mean(arr);
+    
+catch
+    fprintf('error in try section\n');  
+    try
+        nk =  neckhandle3(filename1,filename2,height,P,ps,t,ps0);
+        nck = NeckCalc(filename1,filename2,height);
+        neck = (nk + nck)/2;
+        
+    catch
+        try
+            fprintf('Another try for rescue\n');
+            nck1 =  neckhandle4(filename1,filename2,height);
+            nck2 = NeckCalc(filename1,filename2,height);
+            neck = (nck1+nck2)/2;
+            
+        catch
+            fprintf('Final try for rescue\n');
+            neck = NeckCalc(filename1,filename2,height);
+        end
+        
+    end
+end   
+ValuesInInches(8)=neck;
+
+
+%%%%%%results with this are 11/21 or 11/22 %%%%%%%%
+

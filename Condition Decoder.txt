@@ -1,0 +1,36 @@
+S+R con1   ---> try(measureneck =or-15 )catch(realmeasureneck +or-15)
+S+R con2   ---> try(realmeasureneck +or-15)catch(measureneck =or-15 )
+ correction +or-15 has been applied from now on every neck alg.
+S+R con3+4   ---> try(mean of realmeasureneck and measureneck)catch(decide which of the two is not working and use the other one like if realmeasureneck not working use measureneck)
+
+NeckCalc ConA,B   --->try(mean of S+Rcon3 and NeckCalc)....mentiontioned in a separate notepad doc named  as......NeckCalcCons
+
+
+%neck = min(neck2,neck3);    %%for NeckCalc-1
+%neck = max(neck2,neck3);    %%for NeckCalc-2
+neckx = (neck2 + neck3)/2;    %%for NeckCalc-3  this is used as neck measurement for this condition
+necky = min(neck2,neck3); 
+neck = (neckx + necky)/2;     %%for NeckCalc-4    %%finalised NeckCalc-4
+
+Finally  NeckCalc2() is used and consists of NeckCalc-4 conB S+R con3+4.
+
+
+newhipfront()---> new function for hip in front image
+new_right_points()---> original
+new_right_points2()---> used newhipfront() in this in try and catch is old method for hip
+new_right_points3()---> Condition used here is both old and new method for hip is used ps(5,1,1) is calc by newhipfront and added point ps(8,1,1)  is calc by old hip method.
+the new_right_points3() also uses a another function named measurehip2() outside in the main code that calc the hip value using both ps(5,1) and ps(8,1) and takes max of both as the final value.
+ Using max of both as the final value is --->ConA
+ Using avg of both as the final value is --->ConB
+ Using max plus diff of max and min---->ConC
+    minn=min(l,d);
+    maxx=max(l,d);
+    diff=maxx-minn;
+    h=maxx+diff;   
+Using max plus diff of avg of max,min to max--->Con.D
+    avg=(maxx+minn)/2;
+    diff=maxx-avg;
+    h=maxx+diff;    
+Using CONA+B+C+D+minn/5 as CON.E
+
+Similar will be for new-leftpts()
