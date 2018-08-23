@@ -13,11 +13,11 @@ try
 %     disp(h);
     minn=min(l,d); 
     maxx=max(l,d);
-%     diff=maxx-minn;
-%     h=maxx+diff;      %%CON.C
-    avg=(maxx+minn)/2;
-    diff=maxx-avg;
-    h=maxx+diff;        %%CON.D
+    diff=maxx-minn;
+    h=maxx+diff;      %%CON.C
+    %avg=(maxx+minn)/2;
+    %diff=maxx-avg;
+    %h=maxx+diff;        %%CON.D
     
     
 catch
