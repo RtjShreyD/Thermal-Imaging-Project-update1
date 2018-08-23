@@ -1,4 +1,4 @@
-function h=measurehip2(p1,p2)
+function h=measurehip3(p1,p2)
 try
     j=sqrt((p1(8,1,1)-p1(8,2,1)).^2+(p1(8,1,2)-p1(8,2,2)).^2);
     k=sqrt((p2(8,1,1)-p2(8,2,1)).^2+(p2(8,1,2)-p2(8,2,2)).^2);
