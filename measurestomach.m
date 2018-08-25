@@ -1,4 +1,4 @@
-function  stomach = measurestomach(a1,a2,l,height,tx)
+function  stomach = measurestomach(a1,a2,l,height)
 
 [X1,Y1,x1,y1]=mysmooth(a1);
 [X2,Y2,x2,y2]=mysmooth(a2);
@@ -37,8 +37,8 @@ t=height/(maxfun(Y2)-minfun(Y2));
  stomm4 = t*((stomm/2)+q);
  stomm5 = (stomm2+stomm3+stomm4)/3;
  %disp(stomm5);
- stomach1 = (stom5+stomm5)/2;
- stomach2 = t*tx;
- disp(abs(stomach1-stomach2));
- stomach = min(stomach1,stomach2);
+ stomach = (stom5+stomm5)/2;
+ %stomach2 = t*tx;
+ %disp(abs(stomach1-stomach2));
+ %stomach = min(stomach1,stomach2);
  end
