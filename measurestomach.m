@@ -38,7 +38,4 @@ t=height/(maxfun(Y2)-minfun(Y2));
  stomm5 = (stomm2+stomm3+stomm4)/3;
  %disp(stomm5);
  stomach = (stom5+stomm5)/2;
- %stomach2 = t*tx;
- %disp(abs(stomach1-stomach2));
- %stomach = min(stomach1,stomach2);
  end
