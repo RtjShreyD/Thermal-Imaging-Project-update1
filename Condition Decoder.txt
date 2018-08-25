@@ -36,13 +36,11 @@ Using CONA+B+C+D+minn/5 as CON.E
 Similar will be for new-leftpts()
 
 
-
-CONDITIONS AS ON AFTERNOON 23/8/2018 ARE BELOW: (also refer to the Con 3+4+NeckCalc Cons.txt file for further decoding with the neck part)
-kk=7;
-unswapped val6 and val10
-rounds
-NeckCal2()
-newhipfront()
-newrightpts3() CON.C
-
-
+-->kk=7;
+   unswapped val6 and val10
+   rounds
+   NeckCal2()
+   newhipfront()
+   newrightpts3() CON.C
+   measurestomach()-original            %%%Till here neck is  16/25, hip is 17/25, stomach is, 16/25. on 25/8/2018.
+                            
