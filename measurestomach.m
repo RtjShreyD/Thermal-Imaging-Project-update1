@@ -23,6 +23,7 @@ if (abs(x2(fstom)-x2(bstom))<=3)
     bstom=0;
     track = ymin2:crl2;
     [~,sz]=size(track);
+    disp(sz);
     valy = zeros(size(track));
     for n=1:sz
         valy(n)=y2(track(n));
@@ -67,7 +68,7 @@ end
  halfrec = (p+q);
  stomm2 = t*(stomm); 
  stomm3 = t*((stomm/2)+halfrec);
- stomm4 = t*((stomm/2)+q);
+ stomm4 = t*((stomm/2)+p); %changed here q to p
  stomm5 = (stomm2+stomm3+stomm4)/3;
  %disp(stomm5);
 stomachx = (stom5+stomm5)/2;
