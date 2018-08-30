@@ -36,11 +36,33 @@ Using CONA+B+C+D+minn/5 as CON.E
 Similar will be for new-leftpts()
 
 
--->kk=7;
-   unswapped val6 and val10
-   rounds
-   NeckCal2()
-   newhipfront()
-   newrightpts3() CON.C
-   measurestomach()-original            %%%Till here neck is  16/25, hip is 17/25, stomach is, 16/25. on 25/8/2018.
+-->kk=7;			
+unswapped val6 and val10			
+rounds			
+NeckCal2()			
+newhipfront()			
+newrightpts3() CON.C			
+measurestomach()-2%correction applied			%%%Till here neck is  16/25, hip is 17/25, stomach is 17/25. on 26/8/2018.
+
+Moving from stomach to muscles(biceps) carrying forward the previous used conditions for neck,hip, stomach..................
+
+muscle()-orginal	---->the original function, many changes have been made in it however its recovery method is removing correection and using trd and trdr as the  axis for measurement, also listed in thefunction itself
+muscle()-correction applied  ---> presently using +-5, from here it is finalised so will be applied in every muscle() function, make it understood even if not mentioned
+muscle()-min(d1,d2)  --->d1,d2 are for left and right sides respectively
+muscle()-max(d1,d2)  		
+muscle()-avg(d1,d2)
+
+muscl() CON. A --->min(old bicep measurement, new bicep measurement)	
+muscl() CON. B --->max(old bicep measurement, new bicep measurement)
+muscl() CON. C --->avg(old bicep measurement, new bicep measurement)
+	
+
+
+          
+
+
+
+
+
+
                             
