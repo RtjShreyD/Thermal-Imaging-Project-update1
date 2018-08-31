@@ -1,4 +1,4 @@
-function muscle = muscles(a1,leftloc, rightloc)
+function muscle = muscles2(a1,leftloc, rightloc)
 
 [X1,Y1,x1,y1]=mysmooth(a1);
 
@@ -52,18 +52,17 @@ trdr = min(trdsr); %%use to measure
 trlocr = find(trdsr==trdr);
 tcpr = tr2(trlocr); 
 
-% p=x1(bcpl)+5; %%x left se inc hga
-% q=y1(tcpl)-5;
-% r=x1(bcpr)-5; %%x right se dec hga
-% s=y1(tcpr)-5; %%%because pt match krmme k liye y hmesha upar jaega
-% 
-% d1= sqrt((y1(bcpl)-q).^2 + (p-x1(tcpl)).^2);
-% d2= sqrt((y1(bcpr)-s).^2 + (r-x1(tcpr)).^2);
-% 
-%  muscle = pi*(max(d1,d2));
-% muscle = pi*(d1+d2)/2;
+p=x1(bcpl)+5; %%x left se inc hga
+q=y1(tcpl)-5;
+r=x1(bcpr)-5; %%x right se dec hga
+s=y1(tcpr)-5; %%%because pt match krmme k liye y hmesha upar jaega
 
- muscle = pi*(trdr+trd)/2; %%for muscle original remove the correction
-% and use this
-% disp(muscle);
+d1= sqrt((y1(bcpl)-q).^2 + (p-x1(tcpl)).^2);
+d2= sqrt((y1(bcpr)-s).^2 + (r-x1(tcpr)).^2);
+
+  %muscle = pi*(min(d1,d2));
+ muscle = pi*(d1+d2)/2;
+
+%  muscle = pi*(min(trdr,trd)); %%for muscle original remove the correction
+
 end
