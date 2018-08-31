@@ -1,4 +1,4 @@
-function  measure = arm_muscle(filename1,filename2, height,kk)
+function  measure = arm_muscle0(filename1,filename2, height,kk)
 
 %kk=3;
 % S = strsplit(filename1,'f');
@@ -23,11 +23,11 @@ leftloc=location;
 rightloc=location2;
 % pixel to physical ratio
 t=height/(maxfun(Y2)-minfun(Y2));
-%try
-    m1 = muscles2(a1,leftloc, rightloc);
+% try
+    m1 = muscles(a1,leftloc, rightloc);
     measure = t*m1;
-%catch
-%     fprintf('Inside armmuscle fn error in muscles2 function \n');
+% catch
+%     fprintf('Inside armmuscle0 fn error in muscles function \n');
 %     measure = t*measurenbicep(leftloc,rightloc,X1,Y1);
-%end    
+% end    
 end

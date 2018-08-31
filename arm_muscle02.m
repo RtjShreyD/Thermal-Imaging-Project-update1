@@ -1,10 +1,10 @@
-function  value = arm_muscle2(filename1,filename2, height)
+function  value = arm_muscle02(filename1,filename2, height)
     %[t1,~]=pixeltobody(filename1,filename2,height);
     val = zeros(1,12);
     %thr = 1:12;
     for j=1:1:12
         try
-            m1 = arm_muscle(filename1,filename2, height,j);
+            m1 = arm_muscle0(filename1,filename2, height,j);
             val(j) = m1;
             %disp(val(n));
         catch
@@ -21,13 +21,15 @@ function  value = arm_muscle2(filename1,filename2, height)
             end  
          end    
     end
-    disp(val);
-   try 
-      val1 = ridofzero(val);
-      val2 = valbw_bicep(val1);
-      value = rounds(mean(val2));
-   catch
-       fprintf('armmuscle2 did not give values in range using armmuscle02\n');
-       value = arm_muscle02(filename1,filename2, height);
-   end    
+    %disp(val);
+    try    
+        val1 = ridofzero(val);
+        val2 = valbw_bicep(val1);
+        value = rounds(mean(val2));
+    catch
+        fprintf('No chance to rescue from thresholding in range to calc muscle \n');
+        fprintf('Now using thresh 7 to calc muscle using old method \n');
+        value = Oldbicep(filename1,filename2, height,7);  
+    end    
+
 end
