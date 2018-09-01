@@ -30,7 +30,8 @@ dist1 = sqrt((y3(dloc)-y3(dloc2)).^2 + (x3(dloc)-x3(dloc2)).^2);
 dist2 = sqrt((y1(apl)-y1(apr)).^2 + (x1(apl)-x1(apr)).^2);
 dis = dist1-dist2;
 arm = dis/2;
-muscle = pi*(dis+arm)/2;
-%disp(muscle);
+m1 = pi*(dis+arm)/2;
+m2 = measurenbicep(leftloc,rightloc,X1,Y1);
+muscle = (m1+m2)/2;
 
 end
